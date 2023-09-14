@@ -1,15 +1,15 @@
 #include "monty.h"
 /**
- * main - monty program
+ * main - monty execute program
  * @argc: number of arguments
- * @argv: argument value (filename)
+ * @argv: argument value 
  * Return: Always 0 (Success)
  */
 int main(int argc, char **argv)
 {
-	FILE *fp;
-	size_t size;
-	char *line;
+	FILE *file_p;
+	size_t size_b;
+	char *line_b;
 	stack_t *stack = NULL;
 	unsigned int line_number = 1;
 
@@ -19,22 +19,22 @@ int main(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	}
 
-	line = NULL;
-	size = 0;
-	fp = fopen(argv[1], "r");
-	if (fp == NULL)
+	line_b = NULL;
+	size_b = 0;
+	file_p = fopen(argv[1], "r");
+	if (file_p == NULL)
 	{
-		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
+		fprintf(stderr, "Error: cannot open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
-	while (getline(&line, &size, fp) != -1)
+	while (getline(&line_b, &size_b, file_p) != -1)
 	{
-		read_line(line, line_number, &stack);
+		read_line(line_b, line_number, &stack);
 		line_number++;
 	}
 	free_stack(&stack);
-	free(line);
-	line = NULL;
-	fclose(fp);
+	free(line_b);
+	line_b = NULL;
+	fclose(file_p);
 	return (0);
 }

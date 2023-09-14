@@ -16,13 +16,13 @@ void parse_me(char *function_name, unsigned int line_number, stack_t **stack)
 							{"swap", swap},
 							{"add", add},
 							{NULL, NULL}};
-	unsigned int i;
+	unsigned int k;
 
-	for (i = 0; inst[i].opcode != NULL; i++)
+	for (k = 0; inst[k].opcode != NULL; k++)
 	{
-		if (strcmp(inst[i].opcode, function_name) == 0)
+		if (strcmp(inst[k].opcode, function_name) == 0)
 		{
-			inst[i].f(stack, line_number);
+			inst[k].f(stack, line_number);
 		}
 	}
 }
