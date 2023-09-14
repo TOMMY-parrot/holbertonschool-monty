@@ -34,7 +34,7 @@ int main(int argc, char **argv)
 	}
 	free_stack(&stack);
 	free(line_buffer);
-	line = NULL;
+	line_buffer = NULL;
 	fclose(file_pointer);
 	return (0);
 }
