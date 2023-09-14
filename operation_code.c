@@ -22,8 +22,8 @@ void add(stack_t **stack, unsigned int line_number)
 	}
 	else
 	{
-		sum = (*stack)->s + (*stack)->next->s;
-		(*stack)->next->s = sum;
+		sum = (*stack)->n + (*stack)->next->n;
+		(*stack)->next->n = sum;
 		pop(stack, line_number);
 	}
 }
