@@ -44,10 +44,10 @@ typedef struct instruction_s
 
 
 
-void read_line(char *line, unsigned int line_number, stack_t **stack);
+void intereprate_line(char *line, unsigned int line_number, stack_t **stack);
 int digits(char *input);
 char *input;
-int valid(char *function_name);
+int is_valid_instruction_name(char *function_name);
 void print_error(char *line, unsigned int line_number);
 void execute_instruction(char *opcode, unsigned int line_num, stack_t **stack);
 void free_stack(stack_t **stack);
@@ -58,7 +58,7 @@ void pop(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
 void add(stack_t **stack, unsigned int line_number);
-int is_string_number(char *string);
+int is_input_number(char *string);
 
 
 #endif
