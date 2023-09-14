@@ -75,7 +75,7 @@ int is_valid_instruction_name(char *function_name)
 
 	for (s = 0; valid_name[s][0] != '\0'; s++)
 	{
-		if (strcmp(valid_name[i], function_name) == 0)
+		if (strcmp(valid_name[s], function_name) == 0)
 			return (1);
 	}
 	return (0);
