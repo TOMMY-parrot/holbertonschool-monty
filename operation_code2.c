@@ -11,17 +11,17 @@ void push(stack_t **stack, unsigned int line_number)
 
 	if (input != NULL)
 	{
-		stack_t *msr = malloc(sizeof(stack_t));
+		stack_t *ptr = malloc(sizeof(stack_t));
 
-		msr->n = atoi(input);
-		msr->next = (*stack);
-		msr->prev = NULL;
+		ptr->n = atoi(input);
+		ptr->next = (*stack);
+		ptr->prev = NULL;
 
 		if ((*stack) != NULL)
 		{
-			(*stack)->prev = msr;
+			(*stack)->prev = ptr;
 		}
-		(*stack) = msr;
+		(*stack) = ptr;
 	}
 }
 /**
@@ -32,16 +32,16 @@ void push(stack_t **stack, unsigned int line_number)
  */
 void pall(stack_t **stack, unsigned int line_number)
 {
-	stack_t *vdr;
+	stack_t *ptr;
 
 	(void)line_number;
 	if (stack == NULL || *stack == NULL)
 		return;
-	vdr = *stack;
-	while (vdr)
+	ptr = *stack;
+	while (ptr)
 	{
-		printf("%d\n", vdr->n);
-		vdr = vdr->next;
+		printf("%d\n", ptr->n);
+		ptr = ptr->next;
 	}
 }
 /**
@@ -54,7 +54,7 @@ void pint(stack_t **stack, unsigned int line_number)
 {
 	if (!*stack || !stack)
 	{
-		dprintf(STDERR_FILENO, "L%d: can't pint, stack is empty\n", line_number);
+		dprintf(STDERR_FILENO, "L%d: can't pint, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	else
@@ -74,7 +74,7 @@ void pop(stack_t **stack, unsigned int line_number)
 
 	if (stack == NULL || *stack == NULL)
 	{
-		fprintf(stderr, "L%d: cannot pop an empty stack\n", line_number);
+		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	ptr = *stack;
@@ -90,17 +90,17 @@ void pop(stack_t **stack, unsigned int line_number)
  */
 void swap(stack_t **stack, unsigned int line_number)
 {
-	stack_t *m = (*stack);
-	int len = 0;
+	stack_t *p = (*stack);
+	int length = 0;
 
-	while (m != NULL)
+	while (p != NULL)
 	{
-		len++;
-		m = m->next;
+		length++;
+		p = p->next;
 	}
-	if (len < 2)
+	if (length < 2)
 	{
-		fprintf(stderr, "L%d: can't swap, stack very short\n", line_number);
+		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	else
