@@ -49,7 +49,7 @@ int digits(char *input);
 char *input;
 int valid(char *function_name);
 void print_error(char *line, unsigned int line_number);
-void execute_instruction(char *function_name, unsigned int line_number, stack_t **stack);
+void execute_instruction(char *opcode, unsigned int line_num, stack_t **stack);
 void free_stack(stack_t **stack);
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
