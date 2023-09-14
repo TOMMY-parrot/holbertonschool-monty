@@ -1,12 +1,12 @@
 #include "monty.h"
 /**
- * line_interprator - intrepets the line
+ * read_line - intrepets the line
  * @line: string containnig the line
  * @line_number:number of line
  * @stack: pointer to the stack head
  * Return: void
  */
-void line_interprator(char *line, unsigned int line_number, stack_t **stack)
+void read_line(char *line, unsigned int line_number, stack_t **stack)
 {
 	char *function_name;
 	int inoperative;
@@ -22,7 +22,7 @@ void line_interprator(char *line, unsigned int line_number, stack_t **stack)
 		flag = is_string_number(p);
 		if (strcmp(function_name, "push") == 0 && (!input || flag == 1))
 		{
-			fprintf(stderr, "L%d: usage: pushing integer\n", line_number);
+			fprintf(stderr, "L%d: usage: push integer\n", line_number);
 			free_stack(stack);
 			stack = NULL;
 			free(line);
@@ -39,7 +39,7 @@ void line_interprator(char *line, unsigned int line_number, stack_t **stack)
 			exit(EXIT_FAILURE);
 		}
 		else
-			execute_instruction(function_name, line_number, stack);
+			parse_me(function_name, line_number, stack);
 	}
 }
 /**
@@ -70,12 +70,12 @@ int is_string_number(char *string)
  */
 int valid(char *function_name)
 {
-	char name_instruction[][10] = {"push", "pall", "pint", "pop", "nop", "swap", "add", ""};
-	unsigned int m;
+	char name[][10] = {"push", "pall", "pint", "pop", "nop", "swap", "add", ""};
+	unsigned int i;
 
-	for (m = 0; name_instruction[m][0] != '\0'; m++)
+	for (i = 0; name[i][0] != '\0'; i++)
 	{
-		if (strcmp(name_instruction[m], function_name) == 0)
+		if (strcmp(name[i], function_name) == 0)
 			return (1);
 	}
 	return (0);
@@ -90,7 +90,7 @@ void print_error(char *line, unsigned int line_number)
 {
 	(void)line;
 
-	fprintf(stderr, "L%d: dont know this instruction %s\n", line_number, line);
+	fprintf(stderr, "L%d: unknown instruction %s\n", line_number, line);
 }
 /**
  * free_stack - print error
@@ -99,13 +99,13 @@ void print_error(char *line, unsigned int line_number)
  */
 void free_stack(stack_t **stack)
 {
-	stack_t *srt, *tmp;
+	stack_t *ptr, *tmp;
 
-	srt = *stack;
-	while (srt)
+	ptr = *stack;
+	while (ptr)
 	{
-		tmp = srt;
-		srt = srt->next;
+		tmp = ptr;
+		ptr = ptr->next;
 		free(tmp);
 		tmp = NULL;
 	}

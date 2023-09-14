@@ -1,14 +1,14 @@
 #include "monty.h"
 /**
- * execute_instruction - execute the fuction
- * @opcode: name of the function
- * @line_num: line number of the instruction
- * @stack: pointer to point to the stack head
+ * parse_me - execute the fuction
+ * @function_name: name of the function
+ * @line_number: line number of the instruction
+ * @stack: ponter to pinter to the stack head
  * Return: void
  */
-void execute_instruction(char *opcode, unsigned int line_num, stack_t **stack)
+void parse_me(char *function_name, unsigned int line_number, stack_t **stack)
 {
-	instruction_t instruction[] = {{"pall", pall},
+	instruction_t inst[] = {{"pall", pall},
 							{"pop", pop},
 							{"pint", pint},
 							{"nop", nop},
@@ -16,13 +16,13 @@ void execute_instruction(char *opcode, unsigned int line_num, stack_t **stack)
 							{"swap", swap},
 							{"add", add},
 							{NULL, NULL}};
-	unsigned int f;
+	unsigned int i;
 
-	for (f = 0; instruction[f].opcode != NULL; f++)
+	for (i = 0; inst[i].opcode != NULL; i++)
 	{
-		if (strcmp(instruction[f].opcode, opcode) == 0)
+		if (strcmp(inst[i].opcode, function_name) == 0)
 		{
-			instruction[f].f(stack, line_num);
+			inst[i].f(stack, line_number);
 		}
 	}
 }
