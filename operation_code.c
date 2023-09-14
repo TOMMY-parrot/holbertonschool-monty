@@ -1,4 +1,4 @@
-#include "my_monty.h"
+#include "monty.h"
 /**
  * add - adds 2 numbers
  * @stack:stack

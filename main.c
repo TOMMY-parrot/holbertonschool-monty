@@ -1,4 +1,4 @@
-#include "my_monty.h"
+#include "monty.h"
 /**
  * main - monty program entry point
  * @argc: number of command-line argument
@@ -29,7 +29,7 @@ int main(int argc, char **argv)
 	}
 	while (getline(&line_buffer, &buffer_size, file_pointer) != -1)
 	{
-		intereprate_line(line_buffer, line_number, &stack);
+		line_interprator(line_buffer, line_number, &stack);
 		line_number++;
 	}
 	free_stack(&stack);

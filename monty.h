@@ -1,5 +1,5 @@
-#ifndef MY_MONTY_H
-#define MY_MONTY_H
+#ifndef MONTY_H
+#define MONTY_H
 
 #include <fcntl.h>
 #include <sys/types.h>
@@ -42,14 +42,16 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/*=====> END STRUCTURES <=====*/
 
+/*=====> PROTOTYPES <=====*/
 
-void intereprate_line(char *line, unsigned int line_number, stack_t **stack);
+void line_interprator(char *line, unsigned int line_number, stack_t **stack);
 int digits(char *input);
 char *input;
-int is_valid_instruction_name(char *function_name);
+int valid(char *function_name);
 void print_error(char *line, unsigned int line_number);
-void execute_instruction(char *opcode, unsigned int line_num, stack_t **stack);
+void execute_instruction(char *function_name, unsigned int line_number, stack_t **stack);
 void free_stack(stack_t **stack);
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
@@ -58,7 +60,8 @@ void pop(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
 void add(stack_t **stack, unsigned int line_number);
-int is_input_number(char *string);
+int is_string_number(char *string);
 
+/*=====> END PROTOTYPES <=====*/
 
 #endif

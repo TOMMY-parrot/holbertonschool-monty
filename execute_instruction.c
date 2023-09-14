@@ -1,4 +1,4 @@
-#include "my_monty.h"
+#include "monty.h"
 /**
  * execute_instruction - execute the fuction
  * @opcode: name of the function

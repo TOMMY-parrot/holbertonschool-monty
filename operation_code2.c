@@ -1,4 +1,4 @@
-#include "my_monty.h"
+#include "monty.h"
 
 /**
  * push - push elements into a linked list stack
