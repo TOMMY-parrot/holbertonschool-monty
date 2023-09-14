@@ -19,7 +19,7 @@ void intereprate_line(char *line, unsigned int line_number, stack_t **stack)
 		input = strtok(NULL, " \t\n");
 		valid_intruction = is_valid_instruction_name(function_name);
 		d = input;
-		flag = is_string_number(p);
+		flag = is_input_number(d);
 		if (strcmp(function_name, "push") == 0 && (!input || flag == 1))
 		{
 			fprintf(stderr, "L%d: usage: push integer\n", line_number);
@@ -39,7 +39,7 @@ void intereprate_line(char *line, unsigned int line_number, stack_t **stack)
 			exit(EXIT_FAILURE);
 		}
 		else
-			parse_me(function_name, line_number, stack);
+			intereprate_line(function_name, line_number, stack);
 	}
 }
 /**
