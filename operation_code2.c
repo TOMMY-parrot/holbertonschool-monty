@@ -1,9 +1,9 @@
 #include "my_monty.h"
 
 /**
- * push - push elements onto a linked list stack
- * @stack: pointer to the stack's first element
- * @line_number: line number in the file
+ * push - push elements into a linked list stack
+ * @stack: pointer to the stack first element
+ * @line_number: line number file
  * Return: void
  */
 void push(stack_t **stack, unsigned int line_number)
@@ -67,7 +67,7 @@ void pint(stack_t **stack, unsigned int line_number)
 /**
  * pop - remove the last element from the stack
  * @stack: pointer to the stack
- * @line_number: line number in the file being processed
+ * @line_number: line number in the file
  * Return: void
  */
 void pop(stack_t **stack, unsigned int line_number)
